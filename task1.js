@@ -2,7 +2,7 @@ let arr = [0, 2, 3, 3, 3, 4, 5, 6, 6];
 
 
 Array.prototype.occurencesCount = function(number) {
-  return this.filter(n => n === number).length
+	return this.filter(n => n === number).length
 }
 
 
