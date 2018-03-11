@@ -1,31 +1,31 @@
 const isInteger = num => Number.isInteger(num);
-const splitNunToArr = num => num.toString().split('');
+const splitNumber = num => num.toString().split('');
 const changeElementsInArr = (arr, firstIndex, secondIndex) =>
 	([arr[firstIndex], arr[secondIndex]] = [arr[secondIndex], arr[firstIndex]]);
 
 const biggerNumber = num => {
-	const numArr = splitNunToArr(num);
+	const separatedNumInArr = splitNumber(num);
 
 	if (isInteger(num) && num >= 0) {
-		let returnNum = -1;
-		let count = 0;
-		let previousValueS = [];
+		let resultNum = -1;
+		let countForChange = 0;
+		let previousValuesForCompare = [];
 
-		numArr.reduceRight((previousValue, currentValue, index) => {
-			if (count === 0) {
-				previousValueS.forEach((item, indexPreValues) => {
+		separatedNumInArr.reduceRight((previousValue, currentValue, index) => {
+			if (countForChange === 0) {
+				previousValuesForCompare.forEach((item, indexPreValues) => {
 					if (+item > +currentValue) {
-						changeElementsInArr(numArr, index, indexPreValues);
-						returnNum = +numArr.join('');
-						count++;
+						changeElementsInArr(separatedNumInArr, index, indexPreValues);
+						resultNum = +separatedNumInArr.join('');
+						countForChange++;
 					}
 				});
-
-				previousValueS[index] = currentValue;
-				return currentValue;
+				previousValuesForCompare[index] = currentValue;
 			}
+			return currentValue;
 		}, 0);
-		return returnNum;
+
+		return resultNum;
 	}
 	throw new Error();
 };
